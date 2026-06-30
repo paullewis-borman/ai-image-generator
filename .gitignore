@@ -1,6 +1,7 @@
 .env
 node_modules/
 .DS_Store
+.obsidian/
 
 # Generated images are application-specific output, not source
 images/*.png
