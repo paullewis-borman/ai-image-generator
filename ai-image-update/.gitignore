@@ -1,0 +1,13 @@
+.env
+node_modules/
+.DS_Store
+
+# Generated images are application-specific output, not source
+images/*.png
+images/*.jpg
+images/*.jpeg
+images/*.webp
+images/*.gif
+
+# Keep the golden image as a checked-in example
+!assets/golden-image.*
