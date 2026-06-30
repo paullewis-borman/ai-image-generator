@@ -1,0 +1,169 @@
+{
+  "images": [
+    {
+      "id": "img_20260629-212703-j5us",
+      "filename": "img_20260629-212703-j5us.png",
+      "createdAt": "2026-06-29T21:27:03.606Z",
+      "type": "initial",
+      "parentImage": "golden",
+      "prompt": "<!-- TEMPLATE — replace with the actual default prompt text. -->\n\nChange the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender. Ensure the character is clearly a builder or tradesperson.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-213043-odab",
+      "filename": "img_20260629-213043-odab.png",
+      "createdAt": "2026-06-29T21:30:43.276Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-212703-j5us.png",
+      "prompt": "Change the person in the image to a middle aged man.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-213542-92s0",
+      "filename": "img_20260629-213542-92s0.png",
+      "createdAt": "2026-06-29T21:35:42.677Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-213043-odab.png",
+      "prompt": "Add a Santa hat on the man's head and add some festive Christmas string lights on the forklift, for a fun festive holiday twist.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-214336-rmd7",
+      "filename": "img_20260629-214336-rmd7.png",
+      "createdAt": "2026-06-29T21:43:36.442Z",
+      "type": "reset",
+      "parentImage": "golden",
+      "prompt": "Change the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-214543-4jkn",
+      "filename": "img_20260629-214543-4jkn.png",
+      "createdAt": "2026-06-29T21:45:43.115Z",
+      "type": "initial",
+      "parentImage": "golden",
+      "prompt": "Change the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-214704-xd2c",
+      "filename": "img_20260629-214704-xd2c.png",
+      "createdAt": "2026-06-29T21:47:04.346Z",
+      "type": "initial",
+      "parentImage": "golden",
+      "prompt": "Change the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-214746-1412",
+      "filename": "img_20260629-214746-1412.png",
+      "createdAt": "2026-06-29T21:47:46.196Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-214704-xd2c.png",
+      "prompt": "Change the character to a young woman with dark hair.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-215744-0naa",
+      "filename": "img_20260629-215744-0naa.png",
+      "createdAt": "2026-06-29T21:57:44.130Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-215631-vjpg.png",
+      "prompt": "Add one more Stormtrooper standing to the girl's left, so there are two Stormtroopers standing together on her left side. Make sure both are positioned correctly on the ground, not overlapping the forklift.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-220011-jned",
+      "filename": "img_20260629-220011-jned.png",
+      "createdAt": "2026-06-29T22:00:11.604Z",
+      "type": "initial",
+      "parentImage": "golden",
+      "prompt": "Change the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-220141-ctdm",
+      "filename": "img_20260629-220141-ctdm.png",
+      "createdAt": "2026-06-29T22:01:41.669Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-220011-jned.png",
+      "prompt": "Swap the guy's hat for a white cowboy stetson hat.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-220445-za6i",
+      "filename": "img_20260629-220445-za6i.png",
+      "createdAt": "2026-06-29T22:04:45.262Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-220141-ctdm.png",
+      "prompt": "Reverse the colors of the t-shirt and the logo on the t-shirt so they are swapped (the current t-shirt color becomes the logo color, and the current logo color becomes the t-shirt color).",
+      "current": false
+    },
+    {
+      "id": "img_20260629-220526-xux2",
+      "filename": "img_20260629-220526-xux2.png",
+      "createdAt": "2026-06-29T22:05:26.852Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-220445-za6i.png",
+      "prompt": "Change the logo on the t-shirt to be white in color.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-220716-ritp",
+      "filename": "img_20260629-220716-ritp.png",
+      "createdAt": "2026-06-29T22:07:16.591Z",
+      "type": "iteration",
+      "parentImage": "img_20260629-220526-xux2.png",
+      "prompt": "Change the small text/tagline under the BENCE logo on the t-shirt to read \"builders merchant\".",
+      "current": false
+    },
+    {
+      "id": "img_20260629-220946-7h2h",
+      "filename": "img_20260629-220946-7h2h.png",
+      "createdAt": "2026-06-29T22:09:46.506Z",
+      "type": "reset",
+      "parentImage": "golden",
+      "prompt": "Change the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender.",
+      "current": false
+    },
+    {
+      "id": "img_20260629-221337-bsq4",
+      "filename": "img_20260629-221337-bsq4.png",
+      "createdAt": "2026-06-29T22:13:37.394Z",
+      "type": "initial",
+      "parentImage": "golden",
+      "prompt": "Change the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender.",
+      "current": false
+    },
+    {
+      "id": "img_20260630-110216-8juh",
+      "filename": "img_20260630-110216-8juh.png",
+      "createdAt": "2026-06-30T11:02:16.539Z",
+      "type": "initial",
+      "parentImage": "golden",
+      "prompt": "Change the person in the image. Choose randomly between a young man or a woman woman. Keep their pose the same and adjust their clothes as appropriate to their gender.",
+      "cost": 0.101523,
+      "current": false
+    },
+    {
+      "id": "img_20260630-110358-36vv",
+      "filename": "img_20260630-110358-36vv.png",
+      "createdAt": "2026-06-30T11:03:58.455Z",
+      "type": "iteration",
+      "parentImage": "img_20260630-110216-8juh.png",
+      "prompt": "Change the person in the image to a man.",
+      "cost": 0.1015115,
+      "current": false
+    },
+    {
+      "id": "img_20260630-135818-osgf",
+      "filename": "img_20260630-135818-osgf.png",
+      "createdAt": "2026-06-30T13:58:18.473Z",
+      "type": "iteration",
+      "parentImage": "img_20260630-110358-36vv.png",
+      "prompt": "Ensure the strapline under the Bence logo on the man's t-shirt says \"Builders Merchants\".",
+      "cost": 0.1015175,
+      "current": true
+    }
+  ]
+}

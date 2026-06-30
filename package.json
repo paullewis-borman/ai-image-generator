@@ -1,0 +1,16 @@
+{
+  "name": "ai-image-update",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Generate and iterate images via the OpenRouter Images API, using a golden image, always-on generic instructions, and a prompt.",
+  "main": "generate-image.js",
+  "scripts": {
+    "init": "node generate-image.js init",
+    "iterate": "node generate-image.js iterate",
+    "reset": "node generate-image.js reset"
+  },
+  "engines": {
+    "node": ">=20.6.0"
+  }
+}
