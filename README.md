@@ -15,4 +15,13 @@ See [`ai-image-update/README.md`](ai-image-update/README.md) for full setup, usa
 
 ## Install into another project
 
-Copy the `ai-image-update/` folder into your repo or backend as-is — no `git clone` of this whole repo needed. It resolves its own paths and carries its own `.env`, `.gitignore`, prompts, and assets, so it works out of the box with no changes to the host project.
+This only ever adds the `ai-image-update/` subfolder — it never touches your project's own `README.md`, `CLAUDE.md`, or `.gitignore`.
+
+```bash
+git clone https://github.com/paullewis-borman/ai-image-generator.git /tmp/ai-image-generator
+cp -r /tmp/ai-image-generator/ai-image-update /path/to/your-project/
+rm -rf /tmp/ai-image-generator
+cd /path/to/your-project/ai-image-update && npm install && cp .env.example .env
+```
+
+Don't clone or unzip this repo directly *into* an existing project folder — that brings this repo's own root `README.md`, `CLAUDE.md`, and `.gitignore` along with it, which would collide with whatever your project already has. Cloning to a scratch location first and copying out just the `ai-image-update/` subfolder avoids that entirely, since that folder carries its own `.env`, `.gitignore`, prompts, and assets and needs nothing from the host project.
