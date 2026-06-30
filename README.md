@@ -1,27 +1,75 @@
 # ai-image-generator
 
-Self-contained tool for updating an image via the OpenRouter API. All the logic, prompts, and assets live in [`ai-image-update/`](ai-image-update/README.md).
+Node.js script that updates an image via the OpenRouter Images API. Each run sends a base image plus a prompt to a model and saves the result as a new image, tracked in `images/manifest.json`.
 
-## Install standalone
+Three modes:
+
+- **init** — generate from the golden image using the default prompt.
+- **iterate** — apply a new prompt on top of the most recently generated image.
+- **reset** — regenerate the default image from the golden image via the API (not a file copy), becoming the new current image.
+
+A fixed set of "generic instructions" (size, aspect ratio, style, what may/may not change) is prepended to every prompt on every call and always takes precedence over the per-request prompt.
+
+## Install
 
 ```bash
 git clone https://github.com/paullewis-borman/ai-image-generator.git
-cd ai-image-generator/ai-image-update
+cd ai-image-generator
 npm install
 cp .env.example .env   # then add your OPENROUTER_API_KEY
 ```
 
-See [`ai-image-update/README.md`](ai-image-update/README.md) for full setup, usage, and how it works.
+### Using this inside another project
 
-## Install into another project
-
-This only ever adds the `ai-image-update/` subfolder — it never touches your project's own `README.md`, `CLAUDE.md`, or `.gitignore`.
+`git clone` (or `git submodule add`) always creates a new directory named after the destination you give it — that's what keeps it isolated from your project's own `README.md`, `CLAUDE.md`, and `.gitignore`, regardless of this repo's own layout. Just clone it into a path you choose rather than into your project's root:
 
 ```bash
-git clone https://github.com/paullewis-borman/ai-image-generator.git /tmp/ai-image-generator
-cp -r /tmp/ai-image-generator/ai-image-update /path/to/your-project/
-rm -rf /tmp/ai-image-generator
-cd /path/to/your-project/ai-image-update && npm install && cp .env.example .env
+# tracked as a submodule, pinned to a commit
+git submodule add https://github.com/paullewis-borman/ai-image-generator.git path/in/your/project
+
+# or just vendor the files directly, no submodule tracking
+git clone https://github.com/paullewis-borman/ai-image-generator.git path/in/your/project
+rm -rf path/in/your/project/.git
 ```
 
-Don't clone or unzip this repo directly *into* an existing project folder — that brings this repo's own root `README.md`, `CLAUDE.md`, and `.gitignore` along with it, which would collide with whatever your project already has. Cloning to a scratch location first and copying out just the `ai-image-update/` subfolder avoids that entirely, since that folder carries its own `.env`, `.gitignore`, prompts, and assets and needs nothing from the host project.
+Either way, don't run `git clone <url> .` from inside an existing project's root — that dumps this repo's own root files there and will collide with whatever's already in place.
+
+## Usage
+
+```bash
+node generate-image.js init
+node generate-image.js iterate "make the sky overcast"
+node generate-image.js reset
+```
+
+Equivalent npm scripts: `npm run init`, `npm run iterate -- "<prompt>"`, `npm run reset`.
+
+Each run prints the mode, source image, model used, the saved output path under `images/`, and the cost (`Cost: $X`) reported by the OpenRouter API. If the API doesn't return a cost, the script says so rather than omitting it.
+
+## How it works
+
+1. `generic-instructions.md` (`prompts/`) is read and prepended to the request prompt on every call, with explicit precedence over it.
+2. The source image is selected by mode: `init`/`reset` use `assets/golden-image.*`; `iterate` uses the image currently flagged `"current": true` in `images/manifest.json`.
+3. The combined prompt + source image are sent to OpenRouter (`POST /api/v1/images`).
+4. The returned image is saved to `images/` as `img_<YYYYMMDD-HHMMSS>-<4-char-suffix>.png`, and a new entry is appended to `images/manifest.json` (marked `current`; the previous current entry is unmarked).
+
+## Repo layout
+
+```
+assets/golden-image.<ext>     canonical starting image (checked in, never modified by the script)
+prompts/generic-instructions.md   always-on rules, highest precedence on every call
+prompts/default-prompt.md         prompt used by init/reset
+images/                            generated outputs + manifest.json (history/state)
+generate-image.js                  the script
+.env                                OPENROUTER_API_KEY etc. (not committed)
+```
+
+See `CLAUDE.md` for the full design rationale, and `assets/README.md` / `images/README.md` for details on those folders.
+
+## Notes for agents
+
+- Always run `iterate` against the image marked `"current": true` in `images/manifest.json`, not the golden image — only `init`/`reset` use the golden image.
+- Never edit or delete `assets/golden-image.*`.
+- Never skip `generic-instructions.md` or let a user prompt override it; the script enforces this by prepending it, but don't construct calls that bypass `generate-image.js`.
+- Generated PNGs/JPGs/WEBPs under `images/` are gitignored (only `manifest.json` and the golden image are tracked); don't expect `git status` to show new generations as untracked-but-missing.
+- If this script is being run inside a Cowork session, show the resulting image inline (`mcp__cowork__present_files`) and report the `cost` from stdout/manifest — don't just report a filename.
